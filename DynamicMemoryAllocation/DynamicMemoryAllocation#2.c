@@ -3,45 +3,25 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct book_title
-{
-	char* title;
-} BINFO;
-
 
 int main()
 {
-	BINFO* bp = NULL;
-	int n, i;
-	char tmp[100];
+	int i;
+	char** pch;
+	pch = (char**)malloc(3 * sizeof(char*));
+	for (i = 0; i < 3; i++)
+		pch[i] = (char*)malloc(4 * sizeof(char));
 
-	scanf("%d\n", &n);
+	strcpy(pch[0], "aaa");
+	strcpy(pch[1], "bbb");
+	strcpy(pch[2], "ccc");
 
-	bp = (BINFO*)malloc(n * sizeof(BINFO));
-	
-	if (bp == NULL)
-	{
-		printf("Not enough memory!");
-		return -1;
-	}
+	for (i = 0; i < 3; i++)
+		printf("%s\n",(pch[i]);
+	for (i = 0; i < 3; i++)
+		free(pch[i]);
 
-	for (i = 0; i < n; i++)
-	{
-		gets(tmp);
-		bp[i].title = (char*)malloc((strlen(tmp) + 1) * sizeof(char));
+	free(pch);
 
-		if (bp[i].title == NULL)
-		{
-			printf("Not enough memory!");
-			return -1;
-		}
-		strcpy(bp[i].title, tmp);
-	}
-	for (i = 0; i < n; i++)
-	{
-		printf("%s \n", bp[i].title);
-	}
-	for (i = 0; i < n; i++) free(bp[i].title);
-		
 	return 0;
 }
