@@ -1,2 +1,2 @@
 # Data Structure
-## Comprehensive coding based on C language
+Based on C / python
